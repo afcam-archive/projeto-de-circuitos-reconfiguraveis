@@ -1,0 +1,280 @@
+\section{Pré-experimento}
+
+
+O pre relatório foi realizado simulando os circuitos A e B, utilizando a ferramenta QUCS, também foram feitos os cálculos teóricos dos parâmetros para cada um. Dados estes utilizados para encontrar o erro percentual.
+Os circuitos de duas portas a serem analisados estão representados nas Figuras 1 e 2.
+
+ Para cada circuito foi necessário encontrar os parâmetros de impedância $z$. Inicialmente buscou-se os parâmetros z11 e z21
+com valores de tensão de entrada $(V_1)$ sendo determinados por valores fixos da corrente de entrada $(I_1)$, apos este procedimento foram encontrados os parâmetros  $z_{12}$ e $z_{22}$ com valores de tensão de saída $(V_2)$ determinados a partir dos valores fixos de $(I_2)$.
+
+
+ \begin{figure}[!ht]
+        \begin{center}
+        \includegraphics[width=2.0in]{Images/QA.png}
+         %\vspace{-15pt}
+         \label{fig:1}
+        \caption{{Quadripolo A}}\label{QA} 
+        \end{center}
+ \end{figure}
+ \begin{figure}[!ht]
+        \begin{center}
+        \includegraphics[width=3.0in]{Images/QB.png}
+         %\vspace{-15pt}
+         \label{fig:2}
+        \caption{{Quadripolo B}}\label{QB} 
+        \end{center}
+ \end{figure}
+
+
+\subsection{Cálculo Teórico}
+
+\subsubsection{Quadripolo A}
+
+Determina-se primeiramente os parâmetros $z_{11}$ e
+$z_{21}$. Excitando o quadripolo A com uma fonte de tensão $V_1$ e
+deixando o circuito aberto na saída, com tensão $V_2$ com o circuito aberto.
+
+
+
+\begin{equation}\label{eq:v1}
+V_1 = \frac{R_1R_2+R_1^2}{2R_2+R_1}\times I_1
+\end{equation}
+
+Substituindo os valores $R_1=10k\Omega$ e $R_2=4.7k\Omega$ temos:
+\begin{equation}\label{eq:z11}
+V_1 = 5951,41\times I_1 \rightarrow {V_1 \over I_1} =z_{11}=5,95k\Omega 
+\end{equation}
+
+Agora pra $V_2$ podemos perceber que podemos calcula-lo por meio de um divisor de tensão:
+
+\begin{equation}\label{eq:v2}
+V_2 =  \frac{R_1}{R_1 + R_2} \times V_1
+\end{equation}
+Como ja sabemos o valor de ${V_1}$ temos:
+
+\begin{equation}\label{eq:z22}
+ {V_2 \over I_1} =z_{21}= \frac{R_1}{R_1 + R_2} \times \frac{R_1R_2+R_1^2}{2R_2+R_1} = 4048,58\Omega
+\end{equation}
+
+A equação \ref{eq:z22} nos da a impedância $z_{21}$. Mas como o circuito
+e recíproco, isto e um circuito linear e sem fontes dependentes, então$ z_{21} = z_{12}$.
+
+
+Para obtermos $z_{22}$ excita-se o circuito com tensão $V_2$ na saída e circuito aberto na entrada, ou seja, com $I_1 = 0$. Desta forma $V_2$ sera dado pela equação abaixo:
+\begin{equation}\label{eq:v21}
+V_2 = \frac{R_1R_2+R_1^2}{2R_2+R_1}\times I_2 = 5951,41
+\end{equation}
+Portanto,
+
+\begin{equation}\label{eq:z22}
+ {V_2 \over I_2} =z_{22}=5,95k\Omega 
+\end{equation}
+
+Assim, foram encontrados os seguintes
+resultados, para a impedância do quadripolo A.
+
+\begin{equation}
+\left[ \begin{array}{c} z \end{array} \right]_A = 
+\begin{bmatrix} 
+5951,41 & 4048,58 \\
+4048,58 & 5951,41
+\end{bmatrix} 
+\Omega
+\label{teoA}
+\end{equation}
+
+
+
+\subsubsection{Quadripolo B} Seguindo o mesmo procedimento para
+o Quadripolo A, foram encontrados o resultados a seguir,
+utilizando o circuito da Figura \ref{fig:2}.
+No primeiro momento, calculou-se $z_{11}$ e $z_{21}$. Pode-se
+observar que $V_1$ e dado pela equação abaixo:
+
+
+\begin{equation}\label{eq:z12}
+ {V_1 \over I_1} = \frac{3R_2^2+4R_1R_2+R_1^2}{R_1(3R_2^2+2R_1R_2)} 
+\end{equation}
+Substituindo os valores $R_1=10k\Omega$ e $R_2=4.7k\Omega$ temos:
+
+\begin{equation}\label{eq:z22}
+ {V_1 \over I_1} = z_{11} = 7619,05\Omega
+\end{equation}
+
+Para $V_2$ temos:
+\begin{equation}\label{eq:z222}
+ V_2 = \frac{R_1R_2}{3R_2^2+2R_1R_2}\times V_1
+\end{equation}
+Portanto,
+\begin{equation}\label{eq:z223}
+ {V_2 \over I_1} =z_{21}= \frac{R_1R_2}{3R_2^2+2R_1R_2}\times \frac{3R_2^2+4R_1R_2+R_1^2}{R_1(3R_2^2+2R_1R_2)} = 952,38\Omega
+\end{equation}
+
+Adotando o componente ativo para excitação do circuito  $V_2$ na saída e adotando $V_1$ como tensão de circuito aberto, também e dito que $I_1 = 0$. Neste segundo momento, pode-se
+calcular os valores de $z_{12}$ e $_{22}$, porem só necessita-se de $z_22$, pois percebe-se que o circuito e recíproco.
+
+Para $V_2$ temos:
+\begin{equation}\label{eq:z224}
+ {V_2 \over I_2} = \frac{3R_2^2+4R_1R_2+R_1^2}{R_1(3R_2^2+2R_1R_2)} 
+\end{equation}
+
+\begin{equation}\label{eq:z225}
+ {V_2 \over I_2} = z_{22} = 7619,05\Omega
+\end{equation}
+
+
+Assim, foram encontrados os seguintes
+resultados, para a impedância do quadripolo A.
+
+\begin{equation}
+\left[ \begin{array}{c} z \end{array} \right]_B = 
+\begin{bmatrix} 
+7619,05 & 952,38 \\
+952,38 & 7619,05
+\end{bmatrix} 
+\Omega
+\label{teoA}
+\end{equation}
+
+
+% Seguindo os passos explicados na Secção~\ref{int}, determinou-se os parâmetros de impedância do circuito, utilizando as equações~\ref{z1} e~\ref{z2}. 
+
+% Os resultados encontrados, podem ser conferidos na matriz de impedância, apresentada na equação~\ref{teoA}. Como para este quadripolo só será realizado a associação em série, não calculou-se os parâmetros $y$ e $T$, porém com uma matriz de qualquer parâmetro, basta converter para os outros~\cite{b3}.
+
+% \begin{equation}
+% \left[ \begin{array}{c} z \end{array} \right]_A = 
+% \begin{bmatrix} 
+% 5951,41 & 4048,58 \\
+% 4048,58 & 5951,41
+% \end{bmatrix} 
+% \Omega
+% \label{teoA}
+% \end{equation}
+
+% \subsubsection{Quadripolo B}
+
+% Da mesma forma que o Quadripolo A, para este só é necessário o cálculo dos parâmetros de impedância, realizando o mesmo procedimento encontrou-se os valores da matriz de impedância da equação~\ref{teoB}.
+
+% \begin{equation}
+% \left[ \begin{array}{c} z \end{array} \right]_B = 
+% \begin{bmatrix} 
+% 3292.99 & 2993.63 \\
+% 2993.63 & 3630.57
+% \end{bmatrix} 
+% \Omega
+% \label{teoB}
+% \end{equation}
+
+
+% \subsubsection{Quadripolo C}
+% Para o Quadripolo C, foi necessário encontrar parâmetros de impedância, admitância e transmissão para isso inicialmente foi calculado os parâmetros $z$, depois aplicou-se a conversão de parâmetros.
+
+% \begin{equation}
+% \left[ \begin{array}{c} z \end{array} \right]_C = 
+% \begin{bmatrix} 
+% 5450 & 500 \\
+% 500 & 1000
+% \end{bmatrix}
+% \Omega
+% \label{teoCz}
+% \end{equation}
+
+% \begin{equation}
+% \left[ \begin{array}{c} y \end{array} \right]_C = 
+% \begin{bmatrix} 
+% 192,31 & -96,15 \\
+% -96,15 & 1048,1
+% \end{bmatrix} 
+% {\mu}A
+% \label{teoCy}
+% \end{equation}
+
+% \begin{equation}
+% \left[ \begin{array}{c} T \end{array} \right]_C = 
+% \begin{bmatrix} 
+% 10,9 & 10400 \\
+% 0,002 & 2
+% \end{bmatrix} 
+% \label{teoCt}
+% \end{equation}
+
+\subsection{Simulações}
+O software QUCS possui as simulação por parâmetros de varredura, que  variar um
+parâmetro do circuito.
+
+\subsubsection{Quadripolo A} O circuito simulado para obter os parâmetros $z_{11}$ e$ z_{21}$ esta na Figura \ref{QB1} e para os parâmetros $z_{12}$ e $z_{22}$ na Figura \ref{QB2}.
+
+
+ \begin{figure}[!ht]
+        \begin{center}
+        \includegraphics[width=2.5in]{Images/QA1.png}
+         %\vspace{-15pt}
+        \caption{Quadripolo A com fonte de corrente na entrada.}
+        \label{QB1} 
+        \end{center}
+ \end{figure}
+
+ \begin{figure}[!ht]
+        \begin{center}
+        \includegraphics[width=2.5in]{Images/QA2.png}
+         %\vspace{-15pt}
+        \caption{Quadripolo A com fonte de corrente na saída.}
+        \label{QB2} 
+        \end{center}
+ \end{figure}
+
+ \begin{table}[!ht]
+\centering
+\caption{Resultados simulados para o quadripolo A}
+
+\begin{tabular}{l|l|l|l|l}
+      & $0.5mA$                      & $0.8mA$ & $1.0mA$ & \multicolumn{1}{l}{1.2mA}  \\ 
+\hline
+$z_{11}$ & 5951,42 $\Omega$ & 5951,41$\Omega$  & 5951,42$\Omega$ & 5951,41$\Omega$                    \\ 
+\hline
+$z_{12}$ & 4048,58$\Omega$  & 4048,58$\Omega$  & 4048,58$\Omega$  & 4048,58$\Omega$                       \\ 
+\hline
+$z_{21}$ & 4048,58$\Omega$  & 4048,58$\Omega$  & 4048,58$\Omega$  & 4048,58$\Omega$                       \\ 
+\hline
+$z_{22}$ & 5951,42$\Omega$  & 5951,41$\Omega$  & 5951,42$\Omega$  & 5951,41$\Omega$                       \\
+\end{tabular}
+\end{table}
+
+\newpage
+\subsubsection{Quadripolo B} O circuito simulado para obter os parâmetros $z_{11}$ e$ z_{21}$ esta na Figura \ref{QB3} e para os parâmetros $z_{12}$ e $z_{22}$ na Figura \ref{QB4}.
+
+ \begin{figure}[!ht]
+        \begin{center}
+        \includegraphics[width=2.5in]{Images/QB1.png}
+         %\vspace{-15pt}
+        \caption{Quadripolo B com fonte de corrente na entrada.}
+        \label{QB3} 
+        \end{center}
+ \end{figure}
+
+ \begin{figure}[!ht]
+        \begin{center}
+        \includegraphics[width=2.5in]{Images/QB2.png}
+         %\vspace{-15pt}
+        \caption{Quadripolo B com fonte de corrente na saída.}
+        \label{QB4} 
+        \end{center}
+ \end{figure}
+
+
+\begin{table}[!ht]
+\centering
+\caption{Resultados simulados para o quadripolo B}
+
+\begin{tabular}{l|l|l|l|l}
+      & $0.5mA$                      & $0.8mA$ & $1.0mA$ & \multicolumn{1}{l}{1.2mA}  \\ 
+\hline
+$z_{11}$ & 7619,04 $\Omega$ & 7619,04$\Omega$  & 7619,04$\Omega$ & 7619,04$\Omega$                    \\ 
+\hline
+$z_{12}$ & 952,38$\Omega$  & 952,38$\Omega$  & 952,38$\Omega$  & 952,38$\Omega$                       \\ 
+\hline
+$z_{21}$ & 952,38$\Omega$  & 952,38$\Omega$  & 952,38$\Omega$  & 952,38$\Omega$                       \\ 
+\hline
+$z_{22}$ & 7619,04$\Omega$  & 7619,04$\Omega$  & 7619,04$\Omega$  & 7619,04$\Omega$                       \\
+\end{tabular}
+\end{table}
